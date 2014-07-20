@@ -40,6 +40,7 @@ gem 'spring',        group: :development
 
 gem 'devise'
 gem 'simple_form'
+gem 'carrierwave'
 gem 'bootstrap-sass'
 group :development do
   gem 'rails_layout'
