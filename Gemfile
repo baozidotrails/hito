@@ -38,3 +38,9 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'devise'
+gem 'simple_form'
+gem 'bootstrap-sass'
+group :development do
+  gem 'rails_layout'
+end
