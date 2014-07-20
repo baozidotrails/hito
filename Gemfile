@@ -42,6 +42,8 @@ gem 'devise'
 gem 'simple_form'
 gem 'carrierwave'
 gem 'bootstrap-sass'
+gem 'mini_magick'
+
 group :development do
   gem 'rails_layout'
 end
