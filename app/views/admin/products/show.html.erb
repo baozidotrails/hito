@@ -1,3 +1,4 @@
+<p id="notice"><%= notice %></p>
 <p>
   <strong>Name:</strong>
   <%= @product.name %>
@@ -12,4 +13,5 @@
   <%= image_tag @product.product_image_url.to_s %>
 </p>
 
-<%= link_to 'Back', products_path %>
+<%= link_to 'Edit', edit_admin_product_path(@product) %> |
+<%= link_to 'Back', admin_products_path %>

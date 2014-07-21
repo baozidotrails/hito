@@ -1,11 +1,8 @@
-<h1>Listing products</h1>
-  <div class="container">
-    <% @products.each do |product| %>
-    <div class="col-xs-6 col-md-3">
-      <%= link_to( image_tag(product.product_image_url(:thumb).to_s), product, class: 'thumbnail' ) %>
-    </div>
-    <% end %>
+<h1>全部商品</h1>
+<div class="container">
+  <% @products.each do |product| %>
+  <div class="col-xs-6 col-md-3">
+    <%= link_to( image_tag(product.product_image_url(:thumb).to_s), product, class: 'thumbnail' ) %>
   </div>
-<br>
-
-<%= link_to 'New Product', new_product_path %>
+  <% end %>
+</div>

@@ -4,7 +4,7 @@
 <h1>Crop your image</h1>
 <%= image_tag @product.product_image_url(:large).to_s, id: 'cropbox' %>
 
-<%= form_for(@product) do |f| %>
+<%= form_for([:admin, @product]) do |f| %>
   <% %w[x y w h].each do |attr| %>
     <%= f.text_field "crop_#{attr}" %>
   <% end %>
