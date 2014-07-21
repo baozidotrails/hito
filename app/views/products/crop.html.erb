@@ -1,0 +1,46 @@
+<%= stylesheet_link_tag 'jquery.Jcrop' %>
+<%= javascript_include_tag 'jquery.Jcrop' %>
+
+<h1>Crop your image</h1>
+<%= image_tag @product.product_image_url(:large).to_s, id: 'cropbox' %>
+
+<%= form_for(@product) do |f| %>
+  <% %w[x y w h].each do |attr| %>
+    <%= f.text_field "crop_#{attr}" %>
+  <% end %>
+  <%= f.submit 'Crop' %>
+<% end %>
+
+
+<script>
+  var AvatarCropper,
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
+  jQuery(function() {
+    return new AvatarCropper();
+  });
+
+  AvatarCropper = (function() {
+    function AvatarCropper() {
+      this.updatePreview = __bind(this.updatePreview, this);
+      this.update = __bind(this.update, this);
+      $('#cropbox').Jcrop({
+        aspectRatio: 1,
+        setSelect: [0, 0, 250, 250],
+        onSelect: this.update,
+        onChange: this.update
+      });
+    }
+
+    AvatarCropper.prototype.update = function(coords) {
+      $('#product_crop_x').val(coords.x);
+      $('#product_crop_y').val(coords.y);
+      $('#product_crop_w').val(coords.w);
+      return $('#product_crop_h').val(coords.h);
+    };
+
+    return AvatarCropper;
+
+  })();
+
+</script>

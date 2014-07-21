@@ -25,30 +25,33 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
+    
+    if @product.save
+      if params[:product][:product_image].present?
+        render :crop
       else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        redirect_to root_path, notice: 'Product was successfully created.'
       end
+    else
+      render :edit
     end
+    
   end
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    respond_to do |format|
-      if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
+    
+    if @product.update(product_params)
+      if params[:product][:product_image].present?
+        render :crop
       else
-        format.html { render :edit }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        redirect_to root_path, notice: 'Product was successfully updated.'
       end
+    else
+      render :edit
     end
+    
   end
 
   # DELETE /products/1
@@ -69,6 +72,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :price, :product_image)
+      params.require(:product).permit(:name, :price, :product_image, :crop_x, :crop_y, :crop_w, :crop_h)
     end
 end

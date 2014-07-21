@@ -43,6 +43,7 @@ gem 'simple_form'
 gem 'carrierwave'
 gem 'bootstrap-sass'
 gem 'mini_magick'
+gem 'jcrop-rails-v2'
 
 group :development do
   gem 'rails_layout'
